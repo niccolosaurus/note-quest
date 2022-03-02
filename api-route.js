@@ -9,7 +9,7 @@ module.exports = app => {
         fs.readFile("./db/db.json", (err, data) => {
 
             if (err) throw (err);
-            let parseJSON = JSON.parse(data)
+            const parseJSON = JSON.parse(data)
 
             res.send(parseJSON)
         })
@@ -18,11 +18,11 @@ module.exports = app => {
     //"POST"
     app.post("/api/notes", (req, res) => {
 
-        let reqBody = req.body;
+        const reqBody = req.body;
 
         fs.readFile('./db/db.json', (err, data) => {
 
-            let parseJSON = JSON.parse(data)
+            const parseJSON = JSON.parse(data)
 
             parseJSON.push(reqBody)
 
@@ -38,17 +38,32 @@ module.exports = app => {
     //"DELETE"
     app.delete("/api/notes/:id", (req, res) => {
 
-        let noteId = req.params.id;
-        let newId = 0;
-        console.log(`Deleting note with id ${noteId}`);
-        data = data.filter(currentNote => {
-           return currentNote.id != noteId;
-        });
-        for (currentNote of data) {
-            currentNote.id = newId.toString();
-            newId++;
-        }
-        fs.writeFileSync("./db/db.json", JSON.stringify(data));
-        res.json(data);
+      // console.log(req.params.id);
+    // re-read the json file
+    fs.readFile('./db/db.json', function(err, data){
+
+        // reinstantiate parsed json
+        const parseJSON = JSON.parse(data)
+
+        // loop through existing data
+        for(let i = 0; i < parseJSON.length; i++) {
+
+            // if the uuid of the current index is the same as the uuid of the button being clicked
+            if(parseJSON[i].id === req.params.id) {
+
+                // remove the current index and adjust the array by one
+                parseJSON.splice([i], 1);
+            } 
+    }
+
+    // re-write file after splicing
+    fs.writeFile("./db/db.json", JSON.stringify(parseJSON), "utf8", function(err, data) {
+        if (err) throw err;   
     });
+    });
+
+    // send response
+    res.send('complete')
+});
+
 };
