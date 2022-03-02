@@ -37,35 +37,24 @@ module.exports = app => {
         res.send("Ready. Set. POST")
     });
 
-    //"DELETE"
-    app.delete("/api/notes/:id", (req, res) => {
+    //"DELETE" Cant get my delete to work.
+    // app.delete("/api/notes/:id", (req, res) => {
 
-      // console.log(req.params.id);
-    // re-read the json file
-    fs.readFile('./db/db.json', function(err, data){
+    // fs.readFile('./db/db.json', function(err, data){
 
-        // reinstantiate parsed json
-        const parseJSON = JSON.parse(data)
+    //     const parseJSON = JSON.parse(data)
+    //     for(let i = 0; i < parseJSON.length; i++) {
 
-        // loop through existing data
-        for(let i = 0; i < parseJSON.length; i++) {
+    //         if(parseJSON[i].id === req.params.id) {
+    //             parseJSON.splice([i], 1);
+    //         } 
+    // }
 
-            // if the uuid of the current index is the same as the uuid of the button being clicked
-            if(parseJSON[i].id === req.params.id) {
+    // fs.writeFile("./db/db.json", JSON.stringify(parseJSON), "utf8", function(err, data) {
+    //     if (err) throw err;   
+    // });
+    // });
 
-                // remove the current index and adjust the array by one
-                parseJSON.splice([i], 1);
-            } 
-    }
-
-    // re-write file after splicing
-    fs.writeFile("./db/db.json", JSON.stringify(parseJSON), "utf8", function(err, data) {
-        if (err) throw err;   
-    });
-    });
-
-    // send response
-    res.send('complete')
-});
-
+    // // send response
+    // res.send('complete')
 };
