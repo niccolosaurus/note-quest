@@ -18,7 +18,7 @@ module.exports = app => {
 
     //"POST"
     app.post("/api/notes", (req, res) => {
-
+        //allows for you to click on the notes you have created. 
         const reqBody = req.body;
         reqBody.id =uuidv4();
 
