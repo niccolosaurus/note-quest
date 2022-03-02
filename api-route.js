@@ -38,24 +38,17 @@ module.exports = app => {
     //"DELETE"
     app.delete("/api/notes/:id", (req, res) => {
 
-        fs.readFile('./db/db.json', (err, data) => {
-
-            let parseJSON = JSON.parse(data)
-
-            for (let i = 0; i < parseJSON.length; i++) {
-
-                if (parseJSON[i].id === req.params.id) {
-
-                    parseJSON.splice([i], 1);
-                }
-            }
-
-            fs.writeFile("./db/db.json", JSON.stringify(parseJSON), "utf8", (err, data) => {
-                if (err) throw err;
-            });
+        let noteId = req.params.id;
+        let newId = 0;
+        console.log(`Deleting note with id ${noteId}`);
+        data = data.filter(currentNote => {
+           return currentNote.id != noteId;
         });
-
-        // Response
-        res.send('Completed')
+        for (currentNote of data) {
+            currentNote.id = newId.toString();
+            newId++;
+        }
+        fs.writeFileSync("./db/db.json", JSON.stringify(data));
+        res.json(data);
     });
 };
