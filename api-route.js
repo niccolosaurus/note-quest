@@ -1,5 +1,6 @@
 // Require Links
 const fs = require('fs')
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = app => {
 
@@ -19,6 +20,7 @@ module.exports = app => {
     app.post("/api/notes", (req, res) => {
 
         const reqBody = req.body;
+        reqBody.id =uuidv4();
 
         fs.readFile('./db/db.json', (err, data) => {
 
