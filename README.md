@@ -24,29 +24,16 @@ Download or Clone the repo to your desktop then open with the code editing softw
 ### Usage
 ![note-quest-gif](./public/assets/note-quest.gif)
 
-https://drive.google.com/file/d/1FfSYj7ZSq6Yx2aTGcFtJVZjLlLCNwg_C/view
-https://github.com/niccolosaurus/note-quest
+https://drive.google.com/file/d/1FfSYj7ZSq6Yx2aTGcFtJVZjLlLCNwg_C/view</br>
+https://github.com/niccolosaurus/note-quest</br>
 
 ### License
 MIT
 https://choosealicense.com/licenses/mit/
 
-### License Details
-
-MIT License
-
-Copyright (c) [2022] [Niccolo Eck]
-
 ### Contribution
-me(niccolosaurus)
-
-### Test-Instructions
-n/a
+niccolosaurus (Niccolo Eck)
 
 ### Questions
-[Github Profie](https://github.com/niccolosaurus)
-
-nicco.eck@gmail.com
-
-
-
+[Github Profie](https://github.com/niccolosaurus)</br>
+nicco.eck@gmail.com</br>
